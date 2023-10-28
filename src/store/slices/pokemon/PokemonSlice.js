@@ -10,10 +10,16 @@ export const pokemonSlice = createSlice({
     startLoadingPokemons: (state /*action */) => {
       state.isLoading = true;
     },
+    finishLoadingPokemons: (state /*action */) => {
+      state.isLoading = false;
+    },
     setPokemons: (state, action) => {
-      console.log(action);
+      state.isLoading = false;
+      state.page = action.payload.page;
+      state.pokemons = action.payload.pokemons;
     },
   },
 });
 
-export const { startLoadingPokemons, setPokemons } = pokemonSlice.actions;
+export const { startLoadingPokemons, finishLoadingPokemons, setPokemons } =
+  pokemonSlice.actions;
